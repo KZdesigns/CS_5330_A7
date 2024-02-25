@@ -35,11 +35,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationVC = segue.destination as! DetailViewController
-                destinationVC.recipe = Recipe.recipeList[indexPath.row]
-                destinationVC.index = indexPath.row
-            }
+            let indexPath = tableView.indexPathForSelectedRow
+            let detailsController = segue.destination as! DetailViewController
+            detailsController.index = indexPath!.row
+            detailsController.recipe = Recipe.recipeList[indexPath!.row]
         }
     }
 
